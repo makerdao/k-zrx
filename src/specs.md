@@ -28,7 +28,7 @@ behaviour balanceOf of ZRXToken
 interface balanceOf(address _owner)
 
 types
-  Balance : uint
+  Balance : uint256
 
 storage
   balances[_owner] |-> Balance
