@@ -57,7 +57,7 @@ behaviour allowance of ZRXToken
 interface allowance(address _owner, address _spender)
 
 types
-  Allowance : uint
+  Allowance : uint256
 
 storage
   allowed[_owner][_spender] |-> Allowance
