@@ -12,3 +12,13 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+```k
+syntax Int ::= "#ZRXToken.balances" "[" Int "]" [function]
+rule #ZRXToken.balances[A] => #hashedLocation("Solidity", 0, A)
+```
+
+```k
+syntax Int ::= "#ZRXToken.allowed" "[" Int "][" Int "]" [function]
+rule #ZRXToken.allowed[A][B] => #hashedLocation("Solidity", 1, A B)
+```
