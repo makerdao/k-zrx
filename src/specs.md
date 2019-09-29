@@ -17,10 +17,16 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 behaviour totalSupply of ZRXToken
 interface totalSupply()
 
+types
+  Supply : uint256
+
+storage
+  3 |-> Supply
+
 iff
   VCallValue == 0
 
-returns 1000000000000000000000000000
+returns Supply
 ```
 
 ```act
