@@ -1,4 +1,9 @@
 # k-zrx
 
-To build the ZRX token, which requires solc 0.4.11, use:
+You can build the proofs by running:
+```
+make specs
+```
+
+If building manually, make sure to use `solc` version `0.4.11` for the ZRX token:
 `cd code; dapp --use solc:0.4.11 build`
