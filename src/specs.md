@@ -79,12 +79,12 @@ behaviour transfer-true-distinct of ZRXToken
 interface transfer(address _to, uint _value)
 
 types
-  CallerBalance : uint
-  ToBalance : uint
+  CallerBalance : uint256
+  ToBalance     : uint256
 
 storage
   balances[CALLER_ID] |-> CallerBalance => CallerBalance - _value
-  balances[_to] |-> ToBalance => ToBalance + _value
+  balances[_to]       |-> ToBalance => ToBalance + _value
 
 iff
   VCallValue == 0
@@ -102,7 +102,7 @@ behaviour transfer-true-same of ZRXToken
 interface transfer(address _to, uint _value)
 
 types
-  Balance : uint
+  Balance : uint256
 
 storage
   balances[CALLER_ID] |-> Balance => Balance
@@ -123,12 +123,12 @@ behaviour transfer-false-distinct of ZRXToken
 interface transfer(address _to, uint _value)
 
 types
-  CallerBalance : uint
-  ToBalance : uint
+  CallerBalance : uint256
+  ToBalance     : uint256
 
 storage
   balances[CALLER_ID] |-> CallerBalance
-  balances[_to] |-> ToBalance
+  balances[_to]       |-> ToBalance
 
 iff
   VCallValue == 0
@@ -145,7 +145,7 @@ behaviour transfer-false-same of ZRXToken
 interface transfer(address _to, uint _value)
 
 types
-  Balance : uint
+  Balance : uint256
 
 storage
   balances[CALLER_ID] |-> Balance
@@ -165,14 +165,14 @@ behaviour transferFrom-true-distinct of ZRXToken
 interface transferFrom(address _from, address _to, uint _value)
 
 types
-  Allowance : uint256
+  Allowance   : uint256
   FromBalance : uint256
-  ToBalance : uint256
+  ToBalance   : uint256
 
 storage
   allowed[_from][CALLER_ID] |-> Allowance => (#if Allowance == maxUInt256 #then Allowance #else Allowance - _value #fi)
-  balances[_from] |-> FromBalance => FromBalance - _value
-  balances[_to] |-> ToBalance => ToBalance + _value
+  balances[_from]           |-> FromBalance => FromBalance - _value
+  balances[_to]             |-> ToBalance => ToBalance + _value
 
 iff
   VCallValue == 0
@@ -192,11 +192,11 @@ interface transferFrom(address _from, address _to, uint _value)
 
 types
   Allowance : uint256
-  Balance : uint256
+  Balance   : uint256
 
 storage
   allowed[_from][CALLER_ID] |-> Allowance => (#if Allowance == maxUInt256 #then Allowance #else Allowance - _value #fi)
-  balances[_from] |-> Balance => Balance
+  balances[_from]           |-> Balance => Balance
 
 iff
   VCallValue == 0
@@ -215,14 +215,14 @@ behaviour transferFrom-false-distinct of ZRXToken
 interface transferFrom(address _from, address _to, uint _value)
 
 types
-  Allowance : uint256
+  Allowance   : uint256
   FromBalance : uint256
-  ToBalance : uint256
+  ToBalance   : uint256
 
 storage
   allowed[_from][CALLER_ID] |-> Allowance
-  balances[_from] |-> FromBalance
-  balances[_to] |-> ToBalance
+  balances[_from]           |-> FromBalance
+  balances[_to]             |-> ToBalance
 
 iff
   VCallValue == 0
@@ -240,11 +240,11 @@ interface transferFrom(address _from, address _to, uint _value)
 
 types
   Allowance : uint256
-  Balance : uint256
+  Balance   : uint256
 
 storage
   allowed[_from][CALLER_ID] |-> Allowance
-  balances[_from] |-> Balance
+  balances[_from]           |-> Balance
 
 iff
   VCallValue == 0
